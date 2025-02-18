@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Easter Egg Hunt</title>
+
+    <!-- Include A-Frame and AR.js for WebAR -->
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/jeromeetienne/AR.js/aframe/build/aframe-ar.min.js"></script>
+    <script src="https://unpkg.com/aframe-gps-component/dist/aframe-gps-component.min.js"></script>
+    
+    <script>
+      let collectedEggs = 0;
+      
+      function collectEgg(el) {
+        el.setAttribute('visible', 'false'); // Hide the egg when clicked
+        collectedEggs++;
+        if (collectedEggs >= 5) {
+          alert('🎉 Congratulations! You won! 🎉');
+        }
+      }
+    </script>
+  </head>
+  <body style="margin: 0; overflow: hidden;">
+    
+    <!-- AR Scene -->
+    <a-scene embedded arjs gps-camera>
+      
+      <!-- Easter Eggs (with click-to-collect action) -->
+      <a-entity gps-entity-place="latitude: 49.776183255336996; longitude: 9.57794048895798" 
+                gltf-model="url(https://raw.githubusercontent.com/loewev/Easter-Egg-Hunt/refs/heads/main/EasterEgg.glb))" 
+                scale="0.5 0.5 0.5" 
+                animation="property: scale; to: 0.75 0.75 0.75; dur: 1000; dir: alternate; loop: true"
+                onclick="collectEgg(this)">
+      </a-entity>
+      
+      <a-entity gps-entity-place="latitude: 49.77618671954456; longitude: 9.577892879750236" 
+                gltf-model="url(https://raw.githubusercontent.com/loewev/Easter-Egg-Hunt/refs/heads/main/EasterEgg.glb))" 
+                scale="0.5 0.5 0.5"
+                onclick="collectEgg(this)">
+      </a-entity>
+      
+      <a-entity gps-entity-place="latitude: 49.776171130608645; longitude: 9.577902938033562" 
+                gltf-model="url(https://raw.githubusercontent.com/loewev/Easter-Egg-Hunt/refs/heads/main/EasterEgg.glb))" 
+                scale="0.5 0.5 0.5"
+                onclick="collectEgg(this)">
+      </a-entity>
+      
+      <a-entity gps-entity-place="latitude: 49.77614428298507; longitude: 9.577915007973555" 
+                gltf-model="url(https://raw.githubusercontent.com/loewev/Easter-Egg-Hunt/refs/heads/main/EasterEgg.glb))" 
+                scale="0.5 0.5 0.5"
+                onclick="collectEgg(this)">
+      </a-entity>
+      
+      <a-entity gps-entity-place="latitude: 49.776148613247955; longitude: 9.577838565020272" 
+                gltf-model="url(https://raw.githubusercontent.com/loewev/Easter-Egg-Hunt/refs/heads/main/EasterEgg.glb))" 
+                scale="0.5 0.5 0.5"
+                onclick="collectEgg(this)">
+      </a-entity>
+      
+      <!-- Camera for AR View -->
+      <a-camera gps-camera rotation-reader></a-camera>
+    </a-scene>
+  </body>
+</html>
+
+
+
